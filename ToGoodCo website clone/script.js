@@ -47,13 +47,25 @@ function textAnimation() {
 
 textAnimation();
 
-let shoping = document.querySelector("#page3");
+let shoping = document.querySelectorAll(".child");
 
-shoping.addEventListener("mousemove", (d) => {
+document.addEventListener("mousemove", (d) => {
   gsap.to(".cursor", {
     left: d.x,
     top: d.y,
   });
 });
 
+shoping.forEach((elem) => {
+  elem.addEventListener("mouseenter", () => {
+    gsap.to(".cursor", {
+      transform: "translate(-50%, -50%) scale(1)",
+    });
+  });
+  elem.addEventListener("mouseleave", () => {
+    gsap.to(".cursor", {
+      transform: "translate(-50%, -50%) scale(0)",
+    });
+  });
+});
 // document.querySelector()
